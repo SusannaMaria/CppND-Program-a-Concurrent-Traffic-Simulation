@@ -1,3 +1,13 @@
+/**
+ * @file Intersection.h
+ * @author Stephen Welch, Susanna Maria
+ * @brief Class definition of WaitingVehicles and Intersection
+ * @version 0.1
+ * @date 2020-07-04
+ * 
+ * @copyright Copyright (c) 2020 MIT License
+ * 
+ */
 #ifndef INTERSECTION_H
 #define INTERSECTION_H
 
@@ -6,12 +16,16 @@
 #include <mutex>
 #include <memory>
 #include "TrafficObject.h"
+#include "TrafficLight.h"
 
 // forward declarations to avoid include cycle
 class Street;
 class Vehicle;
 
-// auxiliary class to queue and dequeue waiting vehicles in a thread-safe manner
+/**
+ * auxiliary class to queue and dequeue waiting vehicles in a thread-safe manner
+ * 
+ */
 class WaitingVehicles
 {
 public:
@@ -28,6 +42,11 @@ private:
     std::mutex _mutex;
 };
 
+
+/**
+ * Intersection class 
+ * 
+ */
 class Intersection : public TrafficObject
 {
 public:
@@ -49,7 +68,7 @@ private:
 
     // typical behaviour methods
     void processVehicleQueue();
-
+    TrafficLight _trafficLight;
     // private members
     std::vector<std::shared_ptr<Street>> _streets;   // list of all streets connected to this intersection
     WaitingVehicles _waitingVehicles; // list of all vehicles and their associated promises waiting to enter the intersection

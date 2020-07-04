@@ -1,3 +1,13 @@
+/**
+ * @file TrafficLight.h
+ * @author Stephen Welch, Susanna Maria
+ * @brief Definition of TrafficLight class and Templateclass Messagequeue
+ * @version 0.1
+ * @date 2020-07-04
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #ifndef TRAFFICLIGHT_H
 #define TRAFFICLIGHT_H
 
@@ -47,11 +57,10 @@ public:
     TrafficLight();
 
     // getters / setters
+    TrafficLightPhase getCurrentPhase();
 
     // typical behaviour methods
-    TrafficLightPhase getCurrentPhase();
     void waitForGreen();
-
     void simulate();
 
 private:

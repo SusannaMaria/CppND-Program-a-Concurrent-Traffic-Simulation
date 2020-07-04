@@ -1,3 +1,12 @@
+/**
+ * @file TrafficLight.cpp
+ * @author Stephen Welch, Susanna Maria
+ * @version 0.1
+ * @date 2020-07-04
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include <iostream>
 #include <random>
 #include "TrafficLight.h"
@@ -52,9 +61,11 @@ void TrafficLight::waitForGreen()
     // FP.5b : add the implementation of the method waitForGreen, in which an infinite while-loop
     // runs and repeatedly calls the receive function on the message queue.
     // Once it receives TrafficLightPhase::green, the method returns.
-    while(true){
+    while (true)
+    {
         const TrafficLightPhase phase = _queue.receive();
-        if (phase == green){
+        if (phase == green)
+        {
             return;
         }
     }
