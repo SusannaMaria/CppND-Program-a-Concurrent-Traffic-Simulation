@@ -82,13 +82,16 @@ void TrafficLight::simulate()
     threads.emplace_back(std::thread(&TrafficLight::cycleThroughPhases, this));
 }
 
-// virtual function which is executed in a thread
+// FP.2a : Implement the function with an infinite loop that measures the time between two loop cycles
+// and toggles the current phase of the traffic light between red and green and sends an update method
+// to the message queue using move semantics. The cycle duration should be a random value between 4 and 6 seconds.
+// Also, the while-loop should use std::this_thread::sleep_for to wait 1ms between two cycles.
 void TrafficLight::cycleThroughPhases()
 {
     const int min = 4000;
     const int max = 6000;
 
-    // https://stackoverflow.com/a/19728404
+    // How to use uniform distribution https://stackoverflow.com/a/19728404
 
     std::random_device rd;                            // only used once to initialise (seed) engine
     std::mt19937 rng(rd());                           // random-number engine used (Mersenne-Twister in this case)
@@ -121,9 +124,4 @@ void TrafficLight::cycleThroughPhases()
             phase_duration = uni(rng);
         }
     }
-
-    // FP.2a : Implement the function with an infinite loop that measures the time between two loop cycles
-    // and toggles the current phase of the traffic light between red and green and sends an update method
-    // to the message queue using move semantics. The cycle duration should be a random value between 4 and 6 seconds.
-    // Also, the while-loop should use std::this_thread::sleep_for to wait 1ms between two cycles.
 }
